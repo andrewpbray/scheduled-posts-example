@@ -1,0 +1,13 @@
+---
+date: "01-01-2023"
+listing:
+  contents: posts
+  sort: "date desc"
+  categories: false
+  type: default
+  date-format: medium
+---
+
+Here are the posts.
+
+

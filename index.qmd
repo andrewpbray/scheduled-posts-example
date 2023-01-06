@@ -1,0 +1,4 @@
+
+This is an example of a Quarto website with that features a blog listing on the Posts page linked in the menu. There are three posts: Topic 1 and 2 have `date` fields in the past; Topic 3 has a `date` field in the future. I have unsuccessfully tried to prevent Topic 3 from showing up in the listing using a filter called `scheduled-posts`. It is called in `_quarto.yml` before the `quarto` filters in the hope that one of those quarto filters is the one that would build the listing.
+
+I tried checking to see if the filter was having any effect at all by calling `quarto render posts/topic-3/notes.qmd --to native` at the terminal. Inspecting the native output, I see the inclusion of a `draft: true` field, so the filter seems to be working.

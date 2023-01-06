@@ -1,0 +1,18 @@
+---
+title: "Topic 3"
+author: "John Doe"
+date: "02-02-2050"
+---
+
+You may recognize each of these as summaries of the play, “Hamlet”. None of these are wrong, per se, but they do focus on very different aspects of the work. Summarizing something as rich and complex as Hamlet invariably involves a large degree of omission; we’re reducing a document of 29,551 words down to a single sentence, after all. But summarization also involves important choices around what to include.
+
+The same considerations of omission and inclusion come into play when developing a numerical or graphical summary of a data set. Some guidance to bear in mind:
+
+What should I include?
+
+Qualities relevant to the question you’re answering or claim you’re making
+Features that are aligned with the interest of your audience
+What should I omit?
+
+Qualities that are irrelevant, distracting, or deceptive
+Replicated or assumed information
