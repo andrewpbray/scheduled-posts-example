@@ -102,23 +102,36 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This is an example of a Quarto website featuring a blog listing on the Posts page linked in the navbar. The goal is to allow two versions of this website to be published: a full version of every <code>notes.qmd</code> file in Posts and a partial version showing only the <code>notes.qmd</code> files with dates in the past. The approach in use here required:</p>
+<section id="scheduled-posts-example" class="level1">
+<h1>Scheduled Posts Example</h1>
+<p>This is an example of a Quarto website featuring a blog listing on the Posts page linked in the navbar. The goal is to allow two versions of this website to be published: a full version of every <code>notes.qmd</code> file in Posts and a partial version showing only the <code>notes.qmd</code> files with dates in the past. This repo shows two approaches, both of which store the dates for every post in <code>_schedule.yml</code>.</p>
+<section id="edit-environmental-variable" class="level3">
+<h3 class="anchored" data-anchor-id="edit-environmental-variable">Edit Environmental Variable</h3>
+<p>This approach can be seen by running the follow at the terminal.</p>
+<p><code>quarto render --profile edit-env</code></p>
+<p>What’s happening:</p>
 <ol type="1">
-<li>Creating a <code>_schedule.yml</code> to store the dates for every post.</li>
-<li>Writing a pre-render script, <code>ignore_future_docs.R</code>, to add a <code>_</code> to the start of the directory for any posts in the future. By the Render Targets feature of Quarto Projects, these files will be ignored during the rendering process.</li>
-<li>Writing a post-render script, <code>unignore_future_docs.R</code>, to undo the changes that we made to the paths of the future posts.</li>
-<li>Creating a <code>_quarto-scheduled.yml</code> project profile that runs the pre- and post-render scripts, changes the output directory, and changes the name of the website.</li>
+<li>Quarto runs a config sequence that includes building the list of all files to render and storing it as <code>QUARTO_PROJECT_INPUT_FILES</code>.</li>
+<li>Then it runs <code>edit_render_list.R</code>, which gets that list, strips out files from the future, then re-sets the variable using the partial list.</li>
+<li>Rendering the partial list of files into <code>_site-edit-env</code>.</li>
 </ol>
-<p>To render the full version of the website, you run <code>quarto render</code> and the full site will be rendered into <code>_site-full</code>. To render the partial version of the website, you run <code>quarto render --profile scheduled</code> to render the non-future content into the <code>_site-partial</code> directory.</p>
-<p>Note that at the moment this doesn’t actually work. When rendering the partial site, it runs the pre-render script, but then errors out because it cannot find the original path to the future post. It’s as if when you do <code>quarto render --profile scheduled</code> the order of operations is:</p>
+</section>
+<section id="ignoring-future-posts" class="level3">
+<h3 class="anchored" data-anchor-id="ignoring-future-posts">Ignoring future posts</h3>
+<p>This approach does not work, but it might be instructive to see why not by running,</p>
+<p><code>quarto render --profile ignore-future</code></p>
+<p>What’s happening:</p>
 <ol type="1">
-<li>Build directory of files to render</li>
-<li>Run pre-render scripts</li>
-<li>Render directory of files.</li>
+<li>It runs a pre-render script, <code>ignore_future_docs.R</code>, to add a <code>_</code> to the start of the directory for any posts in the future. By the Render Targets feature of Quarto Projects, these files will be ignored during the rendering process.</li>
+<li>It renders the files into <code>_site-ignore-future</code>.</li>
+<li>It runs a post-render script, <code>unignore_future_docs.R</code>, to undo the changes that we made to the paths of the future posts.</li>
 </ol>
-<p>The solution we’ll try is to run the script manually before running <code>quarto render</code> and not use the pre- and post-render scripting functionality at all.</p>
+<p>You’ll notice that it errors out because it cannot find the original path to the future post. The reason for this is when <code>quarto render</code> is run, it does some config operations <em>before</em> running the pre-render script that includes building a list of all of the files to render. This list is stored in the environmental variable called <code>QUARTO_PROJECT_INPUT_FILES</code>. After running the script, it tries to render the files at their original paths, where they no longer exist.</p>
+<p>This motivated the first approach that edits the environmental variable directly.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
