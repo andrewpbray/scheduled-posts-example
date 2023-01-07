@@ -1,7 +1,6 @@
 ---
 title: "Topic 3"
 author: "John Doe"
-date: "02-02-2050"
 ---
 
 This is the content from a post in the future.
