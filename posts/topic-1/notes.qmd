@@ -1,11 +1,6 @@
 ---
 title: "Topic 1"
 author: "John Doe"
-date: "01-01-2023"
 ---
 
-The concepts of a variable, its type, and the structure of a data frame are useful because they help guide our thinking about the nature of a data. But we need more than definitions. If our goal is to construct a claim with data, we need to a tool to aid in the construction. Our tool must be able to do two things: it must be able to store the data and it must be able to perform computations on the data.
-
-In high school, you gained experience with one such tool: the graphing calculator. This fits our needs: you can enter a list of number into a graphic calculator like the Ti-84, it can store that list and it can execute computations on it, such as taking its sum. But the types of data that a calculator can store are very limited, as is the volume, as are the options for computation.
-
-In this class, we will use a tool that is far more powerful: the computer language called R. The Ti-84 is to R what a tricycle is to the space ship. One of these tools can bring you to the end of the block; the other to the moon. 
+This the content of the oldest post.

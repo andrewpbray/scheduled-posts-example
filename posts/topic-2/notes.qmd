@@ -1,11 +1,6 @@
 ---
 title: "Topic 2"
 author: "John Doe"
-date: "01-02-2023"
 ---
 
-In truth, this plot could be consistent with all these claims. They are, in turn, a descriptive claim, a prediction, a generalization, and a causal claim. This newspaper headline falls squarely in the first category, a descriptive claim, which seeks only to describe the data set that is on hand.
-
-Although 8.3% seems like a simple enough number, is it actually summarizing a vast data set of thousands of prices. The process of describing a data set invariably involves summarizing it, either with numerical summaries like 8.3% or with graphical summaries like the line plot show above.
-
-In this unit, we will learn to critique and construct descriptive claims made with data. Although they sound elementary, descriptive claims are the most common form of claim made using data. They have the power to move, if not mountains, at least markets.
+This is the content of the most recent post.
