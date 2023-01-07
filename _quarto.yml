@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: _staff-site
 
 website:
   title: "Scheduled Posts Example"
@@ -8,12 +8,5 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: about.qmd
-        text: About
       - href: posts.qmd
         text: Posts
-
-date-format: "X"
-filters:
-  - scheduled-posts
-  - quarto
