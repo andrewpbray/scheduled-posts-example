@@ -4,7 +4,7 @@
 .httr-oauth
 .DS_Store
 
-_site-full/
+_site*
 .quarto/
 
 /.quarto/
