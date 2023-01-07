@@ -29,5 +29,4 @@ What's happening:
 
 You'll notice that it errors out because it cannot find the original path to the future post. The reason for this is when `quarto render` is run, it does some config operations *before* running the pre-render script that includes building a list of all of the files to render. This list is stored in the environmental variable called `QUARTO_PROJECT_INPUT_FILES`. After running the script, it tries to render the files at their original paths, where they no longer exist.
 
-This motivated the first approach that edits the environmental variable directly.
-
+This motivated the first approach that edits the environmental variable directly. Note that once you try this approach, it'll change `topic-2` to `_topic-3`, so you'll want to manually change it back.
