@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: _site-full
+  pre-render: print_env_var.R
 
 website:
   title: "Scheduled Posts Example (full render)"

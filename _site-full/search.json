@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "posts/topic-3/notes.html",
+    "href": "posts/topic-3/notes.html",
+    "title": "Topic 3",
+    "section": "",
+    "text": "This is the content from a post in the future."
+  },
+  {
+    "objectID": "posts/topic-2/notes.html",
+    "href": "posts/topic-2/notes.html",
+    "title": "Topic 2",
+    "section": "",
+    "text": "This is the content of the most recent post."
+  },
+  {
+    "objectID": "posts/topic-1/notes.html",
+    "href": "posts/topic-1/notes.html",
+    "title": "Topic 1",
+    "section": "",
+    "text": "This the content of the oldest post."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Scheduled Posts Example (full render)",
+    "section": "",
+    "text": "This is an example of a Quarto website featuring a blog listing on the Posts page linked in the navbar. The goal is to allow two versions of this website to be published: a full version of every notes.qmd file in Posts and a partial version showing only the notes.qmd files with dates in the past. The approach in use here required:\n\nCreating a _schedule.yml to store the dates for every post.\nWriting a pre-render script, ignore_future_docs.R, to add a _ to the start of the directory for any posts in the future. By the Render Targets feature of Quarto Projects, these files will be ignored during the rendering process.\nWriting a post-render script, unignore_future_docs.R, to undo the changes that we made to the paths of the future posts.\nCreating a _quarto-scheduled.yml project profile that runs the pre- and post-render scripts, changes the output directory, and changes the name of the website.\n\nTo render the full version of the website, you run quarto render and the full site will be rendered into _site-full. To render the partial version of the website, you run quarto render --profile scheduled to render the non-future content into the _site-partial directory.\nNote that at the moment this doesn’t actually work. When rendering the partial site, it runs the pre-render script, but then errors out because it cannot find the original path to the future post. It’s as if when you do quarto render --profile scheduled the order of operations is:\n\nBuild directory of files to render\nRun pre-render scripts\nRender directory of files.\n\nThe solution we’ll try is to run the script manually before running quarto render and not use the pre- and post-render scripting functionality at all."
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Scheduled Posts Example (full render)",
+    "section": "",
+    "text": "Here are the posts.\n\n\n\n\n\n\n\n\n\n\nTopic 3\n\n\n\n\n\n\n\n\n\n\n\n\nJohn Doe\n\n\n\n\n\n\n\n\nTopic 2\n\n\n\n\n\n\n\n\n\n\n\n\nJohn Doe\n\n\n\n\n\n\n\n\nTopic 1\n\n\n\n\n\n\n\n\n\n\n\n\nJohn Doe\n\n\n\n\n\n\nNo matching items"
+  }
+]
