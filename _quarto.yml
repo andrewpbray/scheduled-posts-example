@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: _staff-site
+  output-dir: _site
 
 website:
   title: "Scheduled Posts Example"
