@@ -1,3 +1,4 @@
+# Undo everything done in ignore_future_docs.R
 x <- yaml::read_yaml("_schedule.yml")
 
 unignore_future <- function(x) {
