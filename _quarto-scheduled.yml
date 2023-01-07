@@ -1,3 +1,7 @@
 project:
+  output-dir: _site-partial
   pre-render: ignore_future_docs.R
   post-render: unignore_future_docs.R
+
+website:
+  title: "Scheduled Posts Example (partial render)"

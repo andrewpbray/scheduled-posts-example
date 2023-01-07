@@ -1,9 +1,9 @@
 project:
   type: website
-  output-dir: _site
+  output-dir: _site-full
 
 website:
-  title: "Scheduled Posts Example"
+  title: "Scheduled Posts Example (full render)"
   navbar:
     left:
       - href: index.qmd
