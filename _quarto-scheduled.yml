@@ -1,0 +1,3 @@
+project:
+  pre-render: ignore_future_docs.R
+  post-render: unignore_future_docs.R
