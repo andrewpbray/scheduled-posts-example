@@ -11,3 +11,6 @@ website:
         text: Home
       - href: posts.qmd
         text: Posts
+
+execute:
+  freeze: auto
