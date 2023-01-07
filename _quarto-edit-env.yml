@@ -1,0 +1,6 @@
+project:
+  output-dir: _site-edit-env
+  pre-render: edit_render_list.R
+
+website:
+  title: "Scheduled Posts Example (partial render)"
