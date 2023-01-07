@@ -2,6 +2,19 @@
 
 This is an example of a Quarto website featuring a blog listing on the Posts page linked in the navbar. The goal is to allow two versions of this website to be published: a full version of every `notes.qmd` file in Posts and a partial version showing only the `notes.qmd` files with dates in the past. This repo shows two approaches, both of which store the dates for every post in `_schedule.yml`.
 
+
+### Edit Environmental Variable
+
+This approach can be seen by running the follow at the terminal.
+
+`quarto render --profile edit-env`
+
+What's happening:
+
+1. Quarto runs a config sequence that includes building the list of all files to render and storing it as `QUARTO_PROJECT_INPUT_FILES`.
+2. Then it runs `edit_render_list.R`, which gets that list, strips out files from the future, then re-sets the variable using the partial list.
+3. Rendering the partial list of files into `_site-edit-env`.
+
 ### Ignoring future posts
 
 This approach does not work, but it might be instructive to see why not by running,
@@ -16,16 +29,5 @@ What's happening:
 
 You'll notice that it errors out because it cannot find the original path to the future post. The reason for this is when `quarto render` is run, it does some config operations *before* running the pre-render script that includes building a list of all of the files to render. This list is stored in the environmental variable called `QUARTO_PROJECT_INPUT_FILES`. After running the script, it tries to render the files at their original paths, where they no longer exist.
 
-This motivated a second approach that edits the environmental variable directly.
+This motivated the first approach that edits the environmental variable directly.
 
-### Edit Environmental Variable
-
-This approach seems to work and can be seen by running the follow at the terminal. Importantly, if you've started with approach one, be sure to rename `posts/_topic-3` back to `posts/topic-3` (that approach errors out before the post-render script can run to clean up the file names).
-
-`quarto render --profile edit-env`
-
-What's happening:
-
-1. Quarto runs a config sequence that includes building the list of all files to render and storing it as `QUARTO_PROJECT_INPUT_FILES`.
-2. Then it runs `edit_render_list.R`, which gets that list, strips out files from the future, then re-sets the variable using the partial list.
-3. Rendering the partial list of files into `_site-edit-env`.
