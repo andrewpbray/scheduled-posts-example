@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
   push:
     branches: main
-name: Quarto Publish
+name: Publish Full Site
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -12,9 +12,9 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
       - name: Render and Publish
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: netlify
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        shell: bash
         env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           QUARTO_PROFILE: edit-env
+        run: |
+          quarto publish netlify --id 5b76b005-6632-4125-9dbb-1a3d101a3b0c
