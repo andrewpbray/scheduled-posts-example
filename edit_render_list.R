@@ -4,7 +4,6 @@ render_list <- "posts/topic-3/notes.qmd\nposts/topic-2/notes.qmd\nposts/topic-1/
 render_list <- unlist(strsplit(render_list, "\n"))
 
 # Read in schedule data
-install.packages("yaml")
 x <- yaml::read_yaml("_schedule.yml")
 
 # Identify docs in the future
