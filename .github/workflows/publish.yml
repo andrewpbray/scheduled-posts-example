@@ -16,3 +16,5 @@ jobs:
         with:
           target: netlify
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        env:
+          QUARTO_PROFILE: edit-env
