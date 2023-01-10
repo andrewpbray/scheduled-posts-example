@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
   push:
     branches: main
-name: Publish Full Site
+name: Publish Partial Site
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
