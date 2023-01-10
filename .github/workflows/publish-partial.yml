@@ -11,6 +11,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+      - name: Install dependencies
+        run: |
+          install.packages('yaml')
+        shell: Rscript {0}
       - name: Render and Publish
         shell: bash
         env:
