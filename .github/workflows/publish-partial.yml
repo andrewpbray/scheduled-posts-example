@@ -19,6 +19,9 @@ jobs:
         run: |
           install.packages('yaml')
         shell: Rscript {0}
+      - name: Ignore future posts
+        run: |
+          Rscript ignore_future_docs.R
       - name: Render and Publish
         shell: bash
         env:
