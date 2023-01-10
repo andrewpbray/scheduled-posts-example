@@ -22,6 +22,6 @@ jobs:
         shell: bash
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          QUARTO_PROFILE: ignore_future
+          QUARTO_PROFILE: ignore-future
         run: |
           quarto publish netlify --id 5b76b005-6632-4125-9dbb-1a3d101a3b0c
