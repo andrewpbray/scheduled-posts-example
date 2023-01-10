@@ -1,6 +1,11 @@
 # Scheduled Posts Example
 
-This is an example of a Quarto website featuring a blog listing on the Posts page linked in the navbar. The goal is to allow two versions of this website to be published: a full version of every `notes.qmd` file in Posts and a partial version showing only the `notes.qmd` files with dates in the past. This repo shows two approaches, both of which store the dates for every post in `_schedule.yml`.
+This is an example of a Quarto website featuring a blog listing on the Posts page linked in the navbar. The goal is to allow two versions of this website to be published:
+
+- [Full Website](https://leafy-zabaione-c7f6cd.netlify.app/): a full version of every `notes.qmd` file in Posts
+- [Partial Website](https://fancy-salmiakki-ced67b.netlify.app/): a partial version showing only the `notes.qmd` files with dates in the past.
+
+This repo shows two approaches to implementing this, both of which reference the dates for every post that are stored in `_schedule.yml`.
 
 
 ### Edit Environmental Variable
@@ -19,7 +24,7 @@ The problem is that step 3 doesn't work as planned. It seems to be because once 
 
 ### Ignoring future posts
 
-This approach seems to work. See it by running the following two lines at the terminal.
+This approach seems to work and was used to build the sites linked above. See it by running the following two lines at the terminal.
 
 `Rscript ignore_future_docs.R`
 
@@ -32,3 +37,6 @@ What's happening:
 3. It runs a post-render script, `unignore_future_docs.R`, to undo the changes that we made to the paths of the future posts.
 
 
+## Publishing Details
+
+The website linked above were built using the Ignore Future Posts approach. Both sites are published on Netlify via GHA. See `.github/workflow` for details.
