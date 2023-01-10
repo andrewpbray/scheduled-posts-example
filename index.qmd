@@ -5,7 +5,7 @@ This is an example of a Quarto website featuring a blog listing on the Posts pag
 
 ### Edit Environmental Variable
 
-This approach can be seen by running the follow at the terminal.
+This approach doesn't fully work as-is. The issue is demonstrated by running the follow at the terminal.
 
 `quarto render --profile edit-env`
 
@@ -15,18 +15,20 @@ What's happening:
 2. Then it runs `edit_render_list.R`, which gets that list, strips out files from the future, then re-sets the variable using the partial list.
 3. Rendering the partial list of files into `_site-edit-env`.
 
+The problem is that step 3 doesn't work as planned. It seems to be because once the R process from step 2 shuts down, the edited environmental variable isn't visible to the subsequent rendering process. There is probably a way to pass this variable through a file, but I'm not sure how to do that.
+
 ### Ignoring future posts
 
-This approach does not work, but it might be instructive to see why not by running,
+This approach seems to work. See it by running the following two lines at the terminal.
+
+`Rscript ignore_future_docs.R`
 
 `quarto render --profile ignore-future`
 
 What's happening:
 
-1. It runs a pre-render script, `ignore_future_docs.R`, to add a `_` to the start of the directory for any posts in the future. By the Render Targets feature of Quarto Projects, these files will be ignored during the rendering process.
-2. It renders the files into `_site-ignore-future`.
+1. The R script `ignore_future_docs.R` adds a `_` to the start of the directory for any posts in the future. By the Render Targets feature of Quarto Projects, these files will be ignored during the rendering process. This can't be added as a pre-render script because the list of files to render, `QUARTO_PROJECT_INPUT_FILES`, is made before the pre-render script is run.
+2. Quarto renders the unignored files into `_site-ignore-future`.
 3. It runs a post-render script, `unignore_future_docs.R`, to undo the changes that we made to the paths of the future posts.
 
-You'll notice that it errors out because it cannot find the original path to the future post. The reason for this is when `quarto render` is run, it does some config operations *before* running the pre-render script that includes building a list of all of the files to render. This list is stored in the environmental variable called `QUARTO_PROJECT_INPUT_FILES`. After running the script, it tries to render the files at their original paths, where they no longer exist.
 
-This motivated the first approach that edits the environmental variable directly. Note that once you try this approach, it'll change `topic-3` to `_topic-3`, so you'll want to manually change it back.
