@@ -2,8 +2,9 @@
 
 This is an example of a Quarto website featuring a blog listing on the Posts page linked in the navbar. The goal is to allow two versions of this website to be published: a full version of every `notes.qmd` file in Posts and a partial version showing only the `notes.qmd` files with dates in the past. 
 
-[Full Version]()
-[Partial Version]()
+[Full Version](https://leafy-zabaione-c7f6cd.netlify.app/)
+
+[Partial Version](https://fancy-salmiakki-ced67b.netlify.app/)
 
 This repo shows two approaches, both of which store the dates for every post in `_schedule.yml`.
 
